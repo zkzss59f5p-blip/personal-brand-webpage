@@ -1,0 +1,22 @@
+<article id="article-{{ .File.BaseFileName }}" class="card-hover bg-white p-8 border border-stone/20">
+  <div class="flex items-start justify-between mb-4">
+    <h3 class="font-serif text-xl font-semibold">
+      <a href="{{ .Permalink }}" class="text-blue-500 hover:underline">{{ .Title }}</a>
+    </h3>
+    <span class="font-mono text-xs text-cyan bg-cyan/10 px-2 py-1">
+      {{ with .Params.version }}{{ . }}{{ end }}
+    </span>
+  </div>
+  <p class="text-stone/80 mb-6 leading-relaxed">{{ with .Description }}{{ . }}{{ end }}</p>
+  <div class="flex flex-wrap gap-2">
+    {{ with .Params.stack }}
+      <span class="font-mono text-xs text-stone/60">stack: {{ . }}</span>
+    {{ end }}
+    {{ with .Params.status }}
+      <span class="font-mono text-xs text-stone/60">status: {{ . }}</span>
+    {{ end }}
+    {{ with .Params.license }}
+      <span class="font-mono text-xs text-stone/60">license: {{ . }}</span>
+    {{ end }}
+  </div>
+</article>

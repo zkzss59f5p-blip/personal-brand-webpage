@@ -1,0 +1,90 @@
+{{ define "main" }}
+  <!-- Hero Section -->
+  <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="{{ .Site.BaseURL }}images/IMG_0010.PNG" alt="Abstract visualization of structured chaos in banking IT" class="w-full h-full object-cover">
+      <div class="hero-overlay absolute inset-0"></div>
+    </div>
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <p class="font-mono text-cyan text-sm tracking-widest mb-6 opacity-80">BRIDGING BUDDHISM & IT TRANSFORMATION</p>
+      <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-semibold leading-tight mb-8 tracking-tight">
+        Cognitive Clarity<br/>for Banking IT Leadership
+      </h1>
+      <p class="text-lg md:text-xl text-stone/90 font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+        Transforming complex technical challenges into elegant, sustainable solutions through the intersection of ancient wisdom and modern engineering.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#portfolio" class="px-8 py-4 bg-cyan text-vapor font-medium text-sm tracking-wide hover:bg-opacity-90 transition-colors duration-300">
+          Explore Research
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-stone/60" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-160 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16">
+        <p class="font-mono text-cyan text-sm tracking-widest mb-4">RESEARCH & TOOLS</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-semibold tracking-tight">Portfolio</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {{ $portfolio :=where .Site.Pages "Section" "portfolio"}}
+        {{ range $portfolio }}
+          {{ partial "portfolio-card.html" . }}
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Blog Section -->
+  <section id="blog" class="py-160 px-6 bg-stone/5">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-16">
+        <p class="font-mono text-cyan text-sm tracking-widest mb-4">LATEST INSIGHTS</p>
+        <h2 class="font-serif text-4xl md:text-5xl font-semibold tracking-tight">From the Blog</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {{ range first 3 (where .Site.RegularPages "Section" "blog") }}
+          <article class="card-hover bg-white p-8 border border-stone/20">
+            <span class="font-mono text-xs text-cyan bg-cyan/10 px-2 py-1 mb-4 inline-block">
+              {{ .Date.Format "Jan 2, 2006" }}
+            </span>
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <a href="{{ .Permalink }}" class="text-blue-500 hover:underline">{{ .Title }}</a>
+            </h3>
+            <p class="text-stone/80 mb-4 leading-relaxed">{{ with .Description }}{{ . }}{{ end }}</p>
+            <div class="flex gap-2">
+              {{ range .Params.categories }}
+                <span class="font-mono text-xs text-stone/60">Category: {{ . }}</span>
+              {{ end }}
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-160 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="font-mono text-cyan text-sm tracking-widest mb-4">GET IN TOUCH</p>
+      <h2 class="font-serif text-4xl md:text-5xl font-semibold tracking-tight mb-8">
+        Let's Build Something Meaningful
+      </h2>
+      <p class="text-stone/80 text-lg mb-12 leading-relaxed max-w-2xl mx-auto">
+        Ready to transform your technical challenges into elegant solutions? Let's discuss how we can work together to achieve your goals.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:contact@example.com" class="px-8 py-4 bg-cyan text-vapor font-medium text-sm tracking-wide hover:bg-opacity-90 transition-colors duration-300">
+          Start a Conversation
+        </a>
+      </div>
+    </div>
+  </section>
+{{ end }}

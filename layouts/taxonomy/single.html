@@ -1,0 +1,31 @@
+{{ define "main" }}
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-vapor to-stone/20"></div>
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <h1 class="font-serif text-5xl md:text-7xl font-semibold leading-tight mb-8 tracking-tight">
+        {{ .Title }}
+      </h1>
+    </div>
+  </section>
+
+  <section class="py-160 px-6">
+    <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 border border-stone/20">
+      <div class="prose prose-lg prose-stone max-w-none">
+        {{ .Content }}
+      </div>
+      
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        {{ range .Pages }}
+          <article class="card-hover bg-white p-6 border border-stone/20">
+            <h4 class="font-serif text-lg font-semibold mb-3">
+              <a href="{{ .Permalink }}" class="text-blue-500 hover:underline">{{ .Title }}</a>
+            </h4>
+            <span class="font-mono text-xs text-stone/60">
+              {{ .Date.Format "Jan 2, 2006" }}
+            </span>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

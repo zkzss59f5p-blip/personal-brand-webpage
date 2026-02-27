@@ -1,0 +1,71 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ if ne .Title .Site.Title }}{{ .Title }} - {{ end }}{{ .Site.Title }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+  tailwind.config = {
+    content: ["./public/**/*.html", "./layouts/**/*.html"],
+    theme: {
+      extend: {
+        colors: {
+          vapor: '#F8F9FA',
+          midnight: '#0F172A',
+          stone: '#D6D3CD',
+          cyan: '#3B8EA5'
+        },
+        fontFamily: {
+          serif: ['"Playfair Display"', 'serif'],
+          sans: ['"Inter"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace']
+        },
+        spacing: {
+          '128': '32rem',
+          '160': '40rem'
+        }
+      }
+    },
+    plugins: []
+  }
+</script>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  .hero-overlay {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.75) 100%);
+  }
+  .card-hover {
+    transition: all 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.1);
+  }
+  .nav-link {
+    position: relative;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #3B8EA5;
+    transition: width 0.3s ease;
+  }
+  .nav-link:hover::after {
+    width: 100%;
+  }
+</style>
+
+{{ template "_internal/schema.html" . }}
+{{ template "_internal/schema.html" . }}

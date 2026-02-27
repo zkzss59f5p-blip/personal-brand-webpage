@@ -1,0 +1,36 @@
+{{ define "main" }}
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-vapor to-stone/20"></div>
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <h1 class="font-serif text-5xl md:text-7xl font-semibold leading-tight mb-8 tracking-tight">
+        {{ .Title }}
+      </h1>
+      <p class="text-stone/80 text-lg max-w-2xl mx-auto">{{ .Description }}</p>
+    </div>
+  </section>
+
+  <section class="py-160 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {{ range .Site.RegularPages }}
+          <article class="card-hover bg-white p-8 border border-stone/20">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="font-mono text-xs text-cyan bg-cyan/10 px-3 py-1">
+                {{ .Date.Format "Jan 2, 2006" }}
+              </span>
+            </div>
+            <h3 class="font-serif text-xl font-semibold mb-4">
+              <a href="{{ .Permalink }}" class="text-blue-500 hover:underline">{{ .Title }}</a>
+            </h3>
+            <p class="text-stone/80 mb-6 leading-relaxed">{{ with .Description }}{{ . }}{{ end }}</p>
+            <div class="flex flex-wrap gap-2">
+              {{ range .Params.categories }}
+                <span class="font-mono text-xs text-stone/60">Category: {{ . }}</span>
+              {{ end }}
+            </div>
+          </article>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+{{ end }}

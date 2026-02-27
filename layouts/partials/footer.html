@@ -1,0 +1,27 @@
+<footer class="py-12 px-6 border-t border-stone/20">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <svg class="w-6 h-6 text-cyan" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="14" stroke="currentColor" stroke-width="2" fill="none"/>
+          <path d="M10 16L14 20L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="font-serif text-lg font-semibold">Sovereign Sage</span>
+      </div>
+      <div class="flex items-center gap-8">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-sm text-stone/60 hover:text-midnight transition-colors">
+          GitHub
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-sm text-stone/60 hover:text-midnight transition-colors">
+          LinkedIn
+        </a>
+        <a href="{{ .Site.BaseURL }}impressum/" class="text-sm text-stone/60 hover:text-midnight transition-colors">
+          Impressum
+        </a>
+        <a href="{{ .Site.BaseURL }}datenschutz/" class="text-sm text-stone/60 hover:text-midnight transition-colors">
+          Datenschutz
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

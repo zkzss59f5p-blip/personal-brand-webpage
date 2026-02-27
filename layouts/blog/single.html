@@ -1,0 +1,38 @@
+{{ define "main" }}
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <div class="absolute inset-0 bg-gradient-to-br from-vapor to-stone/20"></div>
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <span class="font-mono text-sm text-cyan bg-cyan/10 px-4 py-2 rounded-full mb-6 inline-block">
+        {{ .Date.Format "January 2, 2006" }} &bull; {{ .ReadingTime }} min read
+      </span>
+      <h1 class="font-serif text-4xl md:text-6xl font-semibold leading-tight mb-8 tracking-tight">
+        {{ .Title }}
+      </h1>
+      <div class="flex flex-wrap gap-4 justify-center">
+        {{ range .Params.categories }}
+          <span class="font-mono text-sm text-stone/60 border border-stone/20 px-3 py-1 rounded">
+            {{ . }}
+          </span>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-160 px-6">
+    <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 border border-stone/20">
+      <div class="prose prose-lg prose-stone max-w-none prose-img:border-2 prose-img:border-stone/10">
+        {{ .Content }}
+      </div>
+      
+      <div class="mt-12 pt-8 border-t border-stone/10">
+        <div class="flex flex-wrap gap-2">
+          {{ range .Params.tags }}
+            <span class="font-mono text-sm text-stone/60 bg-stone/5 px-3 py-1 rounded">
+              {{ . }}
+            </span>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </section>
+{{ end }}
